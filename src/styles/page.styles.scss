@@ -1,0 +1,14 @@
+.page {
+    text-align: center;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+.page-content {
+    max-height: 80vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
