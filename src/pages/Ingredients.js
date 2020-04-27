@@ -11,7 +11,7 @@ const Ingredients = ({ loadedIngredients, loading, getIngredients }) => {
     const [ingredients, setIngredients ] = useState([]);
 
     useEffect(() => {
-        if (loadedIngredients.length ==  0) {
+        if (!!loadedIngredients && loadedIngredients.length ==  0) {
             getIngredients()
         }
     }, [loadedIngredients, loading])

@@ -11,7 +11,7 @@
 }
 
 .hero-opacity {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
     height: 500px;
 }
 
@@ -24,12 +24,16 @@
 }
 
 .hero-text {
+    font-family: 'Kurale';
+    font-size: 1.2em;
+    font-weight: bold;
     text-align: start; 
     color: white;
-    font-weight: bold;
 }
 
 .hero-subtext {
+    font-family: 'Kurale';
+    font-size: 1.15em;
     text-align: start; 
     color: white;
 }
@@ -46,7 +50,7 @@
 
     .hero-content-container {
         margin-left: 10vw;
-        padding-top: 50px;
+        padding-top: 35px;
     }
 
     .hero-search-container {

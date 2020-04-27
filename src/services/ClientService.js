@@ -28,6 +28,12 @@ class ClientServiceImpl extends Component {
         })
     }
 
+    getMealDetail = (id) => {
+        return this.get(`${API_URL}${'/lookup.php?i='}${id}`).then(result =>{
+            return (!!result ? result.meals[0] : null);
+        });
+    }
+
     searchMealByName = (name) => {
         return this.get(`${API_URL}${'/search.php?s='}${name}`);
     }
@@ -60,14 +66,16 @@ class ClientServiceImpl extends Component {
         return this.get(`${API_URL}${'/filter.php?a='}${area}`);      
     }
 
-    getMeals = (type, name = null) => {
+    getMeals = (type, param) => {
         switch(type) {
             case GET_TYPE.SEARCH:
-                return this.searchMealByName(name);
+                return this.searchMealByName(param);
             case GET_TYPE.MEALS_BY_AREA:
-                return this.filterByArea(name);
-            case GET_TYPE.MEALS_BY_INGREDIENT(name):
-                return this.filterByMainIngredient(name);
+                return this.filterByArea(param);
+            case GET_TYPE.MEALS_BY_INGREDIENT:
+                return this.filterByMainIngredient(param);
+            case GET_TYPE.MEALS_BY_CATEGORY:
+                    return this.filterByCategory(param);
             default:
                 break;
         }

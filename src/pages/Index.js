@@ -10,7 +10,7 @@ const Index = ({ loadedCategories, loading, getAllMealCategories }) => {
     const [categories, setCategories ] = useState([]);
 
     useEffect(() => {
-        if (loadedCategories.length ==  0) {
+        if (!!loadedCategories && loadedCategories.length ==  0) {
             getAllMealCategories()
         }
     }, [loadedCategories, loading])

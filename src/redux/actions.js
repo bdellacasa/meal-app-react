@@ -7,7 +7,11 @@ import {
     GET_INGREDIENTS_ERROR,
     GET_MEALS_START,
     GET_MEALS_SUCCESS,
-    GET_MEALS_ERROR  
+    GET_MEALS_ERROR,
+    SAVE_CURRENT_MEAL,
+    GET_MEAL_DETAIL_START,
+    GET_MEAL_DETAIL_SUCCESS,
+    GET_MEAL_DETAIL_ERROR,
 } from "./types";
 
 import ClientService from '../services/ClientService';
@@ -55,6 +59,24 @@ const getMealsError = () => ({
     type: GET_MEALS_ERROR
 })
 
+const getMealDetailStart = () => ({
+    type: GET_MEAL_DETAIL_START
+})
+
+const getMealDetailSuccess = (args) => ({
+    type: GET_MEAL_DETAIL_SUCCESS,
+    args
+})
+
+const getMealDetailError = () => ({
+    type: GET_MEAL_DETAIL_ERROR
+})
+
+const saveCurrentMeal = (args) => ({
+    type: SAVE_CURRENT_MEAL,
+    args
+})
+
 const getCategories = () => {
     return dispatch => {
         dispatch(getCategoriesStart());
@@ -85,7 +107,7 @@ const getIngredients = () => {
     }
 }
 
-const getMeals = (type, name = null) => {
+const getMeals = (type, name) => {
     return dispatch => {
         dispatch(getMealsStart());
     
@@ -100,10 +122,27 @@ const getMeals = (type, name = null) => {
     }
 }
 
+const getMealDetail = (id) => {
+    return dispatch => {
+        dispatch(getMealDetailStart());
+    
+        ClientService.getMealDetail(id)
+          .then(res => {
+            dispatch(getMealDetailSuccess(res));
+          })
+          .catch(err => {
+            console.log(err.message)
+            dispatch(getMealDetailError());
+          });
+    }
+}
+
 const actions = {
     getCategories,
     getIngredients,
-    getMeals
+    getMeals,
+    getMealDetail,
+    saveCurrentMeal
 }
 
 export default actions;

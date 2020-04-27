@@ -7,13 +7,18 @@ import {
     GET_INGREDIENTS_ERROR,
     GET_MEALS_START,
     GET_MEALS_SUCCESS,
-    GET_MEALS_ERROR  
+    GET_MEALS_ERROR,
+    SAVE_CURRENT_MEAL,
+    GET_MEAL_DETAIL_START,
+    GET_MEAL_DETAIL_SUCCESS,
+    GET_MEAL_DETAIL_ERROR,
 } from "./types";
 
 const initial_state = {
     categories: [],
     ingredients: [],
     meals: [],
+    meal: null,
     loading: false
 };
 
@@ -22,11 +27,13 @@ export const reducer = (state = initial_state, action) => {
         case GET_CATEGORIES_START:
         case GET_INGREDIENTS_START:
         case GET_MEALS_START:
+        case GET_MEAL_DETAIL_START:
             return Object.assign({}, state, { loading: true });
 
         case GET_CATEGORIES_ERROR:
         case GET_INGREDIENTS_ERROR:
         case GET_MEALS_ERROR:
+        case GET_MEAL_DETAIL_ERROR:
             return Object.assign({}, state, { loading: false });
         
         case GET_INGREDIENTS_SUCCESS:
@@ -37,6 +44,10 @@ export const reducer = (state = initial_state, action) => {
 
         case GET_MEALS_SUCCESS:
             return Object.assign({}, state, { meals: action.args, loading: false });
+
+        case GET_MEAL_DETAIL_SUCCESS:
+        case SAVE_CURRENT_MEAL:
+                return Object.assign({}, state, { meal: action.args, loading: false });
         
         default:
             return state;
