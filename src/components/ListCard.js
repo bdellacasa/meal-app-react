@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from "react-redux";
-import actions from '../redux/actions';
 import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
 import '../styles/list.styles.scss';
 import { PAGE_TYPE, getPageType } from '../utils/Constants'
@@ -35,7 +33,7 @@ const ListCard = (props) => {
     <Link style={{textDecoration: 'none'}} to={getUrl()} onClick={() => onClickHandler()}>
       <Card className={isIndexPage ? "card-index" : "card"}>
         {isIndexPage ? <div className={"image-container"}>
-            <CardImg className={"card-image-index"} src={props.src} style={{ marginTop: '20px' }}  onError={e => onImgError(e)} alt=""/>
+            <CardImg className={"card-image"} src={props.src} onError={e => onImgError(e)} alt=""/>
           </div> :
           <CardImg className={"card-image"} src={props.src} onError={e => onImgError(e)} alt=""/>
         }

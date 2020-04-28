@@ -78,7 +78,7 @@ const Detail = ({ currentMeal, loading }) => {
                 </div>
                 <div className={"detail-instructions"}>
                     <p className={"detail-info-title"}>Instructions</p>
-                    {meal.instructions}
+                    <p className={"detail-info-item"}>{meal.instructions}</p>
                 </div>
             </div>
         )

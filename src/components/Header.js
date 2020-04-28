@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -14,7 +15,7 @@ import {
   } from 'reactstrap';
 
 import '../styles/header.styles.scss';
-import chef from '../assets/chef.png';
+import logo from '../assets/logo.png';
 import ClientService from '../services/ClientService';
 
 const styles =
@@ -57,8 +58,10 @@ const Header = () => {
     return (
         <div>
             <Navbar color="transparent" light expand="md">
-                <img src={chef} className={"header-logo"} />
-                <NavbarBrand href="/" className={"header-navbar-brand"} style={styles.title, { color: (isIndexPage ? 'white' : 'black')}}>MealWeb</NavbarBrand>
+                <Link to={"/"}>
+                    <img src={logo} className={"header-logo"} />
+                </Link>
+                <NavbarBrand href="/" className={"header-navbar-brand"} style={styles.title, { color: (isIndexPage ? 'white' : 'black')}}>MealApp</NavbarBrand>
                 {isIndexPage && <NavbarToggler onClick={toggle} />}
                 {isIndexPage && <Collapse className={"header-menu"} isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

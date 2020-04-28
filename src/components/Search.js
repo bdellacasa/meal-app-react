@@ -33,7 +33,7 @@ const Search = () => {
             </form>
             <button className={"search-button"} onClick={() => navigate()}>Search</button>
         </div>
-        :  <Redirect to={`/search/${query}`} />
+        :  <Redirect push to={`/search/${query}`} />
       )
   )
 }
