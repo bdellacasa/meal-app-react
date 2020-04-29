@@ -11,8 +11,10 @@ import {
     SAVE_CURRENT_MEAL,
     GET_MEAL_DETAIL_START,
     GET_MEAL_DETAIL_SUCCESS,
-    GET_MEAL_DETAIL_ERROR,
+    GET_MEAL_DETAIL_ERROR
 } from "./types";
+
+import ClientService from '../services/ClientService';
 
 const initial_state = {
     categories: [],
@@ -21,6 +23,27 @@ const initial_state = {
     meal: null,
     loading: false
 };
+
+const processMeals = (result) => {
+    return (!!result.meals ? 
+        result.meals.map(meal => ({
+            id: meal.idMeal,
+            src: meal.strMealThumb,
+            title: meal.strMeal
+        }))
+    : []);
+}
+
+const processIngredients = (result) => {
+    return (!!result.meals ? 
+        result.meals.map(ingredient => ({
+            id: ingredient.idIngredient,
+            src: ClientService.getIngredientImgUrl(ingredient.strIngredient),
+            title: ingredient.strIngredient
+        }))
+    : []);
+}
+
 
 export const reducer = (state = initial_state, action) => {
     switch(action.type) {
@@ -37,17 +60,17 @@ export const reducer = (state = initial_state, action) => {
             return Object.assign({}, state, { loading: false });
         
         case GET_INGREDIENTS_SUCCESS:
-            return Object.assign({}, state, { ingredients: action.args, loading: false });
+            return Object.assign({}, state, { ingredients: processIngredients(action.args), loading: false });
 
         case GET_CATEGORIES_SUCCESS:
             return Object.assign({}, state, { categories: action.args, loading: false });
 
         case GET_MEALS_SUCCESS:
-            return Object.assign({}, state, { meals: action.args, loading: false });
+            return Object.assign({}, state, { meals: processMeals(action.args), loading: false });
 
         case GET_MEAL_DETAIL_SUCCESS:
         case SAVE_CURRENT_MEAL:
-                return Object.assign({}, state, { meal: action.args, loading: false });
+            return Object.assign({}, state, { meal: action.args, loading: false });
         
         default:
             return state;

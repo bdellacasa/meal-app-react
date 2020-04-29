@@ -4,26 +4,19 @@ import { Spinner } from 'reactstrap';
 import actions from '../redux/actions';
 import Page from './Page';
 import List from '../components/List';
-import ClientService from '../services/ClientService';
 import '../styles/list.styles.scss';
 
 const Ingredients = ({ loadedIngredients, loading, getIngredients }) => {
     const [ingredients, setIngredients ] = useState([]);
 
     useEffect(() => {
-        if (!!loadedIngredients && loadedIngredients.length ==  0) {
-            getIngredients()
+        if (ingredients.length == 0) {
+            getIngredients();
         }
-    }, [loadedIngredients, loading])
-
-    if(ingredients.length == 0 && !!loadedIngredients && !!loadedIngredients.meals) {
-        setIngredients(loadedIngredients.meals.map(ingredient => ({
-            id: ingredient.idIngredient,
-            src: ClientService.getIngredientImgUrl(ingredient.strIngredient),
-            title: ingredient.strIngredient,
-            description: ingredient.strDescription,
-        })))
-    }
+        if(!!loadedIngredients) {
+            setIngredients(loadedIngredients);
+        }
+    }, [loadedIngredients])
 
     const renderContent = () => {
         return(

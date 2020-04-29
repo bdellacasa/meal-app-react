@@ -10,20 +10,18 @@ import { GET_TYPE } from '../utils/Constants';
 const SearchPage = ({ loadedMeals, loading, getMeals, saveCurrentMeal }) => {
     const [meals, setMeals ] = useState([]);
     const [name, setName] = useState(window.location.pathname.split("/")[2]);
+    const [search, setSearch] = useState(true);
 
     useEffect(() => {
-        if (!!loadedMeals && loadedMeals.length ==  0) {
+        if (meals.length == 0 && search) {
             getMeals(GET_TYPE.SEARCH, name)
+            setSearch(false)
         }
-    }, [loadedMeals, loading])
-
-    if(meals.length == 0 && !!loadedMeals && !!loadedMeals.meals) {
-        setMeals(loadedMeals.meals.map(meal => ({
-            id: meal.idMeal,
-            src: meal.strMealThumb,
-            title: meal.strMeal
-        })))
-    }
+      
+        if(!!loadedMeals) {
+            setMeals(loadedMeals);
+        }
+    }, [loadedMeals])
 
     const onClickHandler = (element) => {
         const currentMeal = loadedMeals.meals.find(m => m.idMeal == element.id);

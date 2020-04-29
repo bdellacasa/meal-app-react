@@ -11,7 +11,7 @@ import {
     SAVE_CURRENT_MEAL,
     GET_MEAL_DETAIL_START,
     GET_MEAL_DETAIL_SUCCESS,
-    GET_MEAL_DETAIL_ERROR,
+    GET_MEAL_DETAIL_ERROR
 } from "./types";
 
 import ClientService from '../services/ClientService';

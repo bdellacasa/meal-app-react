@@ -34,27 +34,24 @@ const MealsByParam = ({ loadedMeals, loading, getMeals, getMealDetail }) => {
     }
 
     useEffect(() => {
-        if (!!loadedMeals && loadedMeals.length ==  0) {
+        if (meals.length == 0) {
             fetchMeals();
         }
-    }, [loadedMeals, loading])
-
-    if(meals.length == 0 && !!loadedMeals && !!loadedMeals.meals) {
-        setMeals(loadedMeals.meals.map(meal => ({
-            id: meal.idMeal,
-            src: meal.strMealThumb,
-            title: meal.strMeal
-        })))
-    }
+        if(!!loadedMeals) {
+            setMeals(loadedMeals);
+        }
+        
+    }, [loadedMeals])
 
     const onClickHandler = (element) => {
         getMealDetail(element.id)
     }
 
     const renderContent = () => {
+        const showSpinner = loading || meals.length == 0;
         return(
             <div>
-                {!loading ? 
+                {!showSpinner ? 
                     <div>
                         <p className={"list-title"}>{getTitle()}</p>
                         <List data={meals} onClick={element => onClickHandler(element)}/>
@@ -88,7 +85,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => ({
     getMeals: (type, name) => dispatch(actions.getMeals(type, name)),
-    getMealDetail: (id) => dispatch(actions.getMealDetail(id))    
+    getMealDetail: (id) => dispatch(actions.getMealDetail(id))
 })
 
 export default connect(
