@@ -18,6 +18,7 @@ const List = (props) => {
             description={element.description}
             onClick={() => onClick(element)}/>
     ));
+    
     return(
         <div className={"list"}>
             {cardsArray}

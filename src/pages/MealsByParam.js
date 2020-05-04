@@ -23,14 +23,19 @@ const MealsByParam = ({ loadedMeals, loading, getMeals, getMealDetail }) => {
     }
 
     const getTitle = () => {
+        let title;
         switch(getPageType(window.location.pathname.split("/")[1])) {
             case PAGE_TYPE.AREA:
-                return `${param} food`;
+                title = `${param} food`;
+            break;
             case PAGE_TYPE.INGREDIENT:
-                return `Food with ${param}`;
+                title = `Food with ${param}`;
+            break;
             case PAGE_TYPE.CATEGORY:
-                return `Category: ${param}`
+                title = `Category: ${param}`;
+            break;
         }
+        return title.replace(/%20/g, " ");
     }
 
     useEffect(() => {

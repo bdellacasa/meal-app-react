@@ -6,6 +6,7 @@ import Page from './Page';
 import List from '../components/List';
 import '../styles/list.styles.scss';
 import { GET_TYPE } from '../utils/Constants';
+import { processMeals } from '../utils/Helpers'
 
 const SearchPage = ({ loadedMeals, loading, getMeals, saveCurrentMeal }) => {
     const [meals, setMeals ] = useState([]);
@@ -14,12 +15,11 @@ const SearchPage = ({ loadedMeals, loading, getMeals, saveCurrentMeal }) => {
 
     useEffect(() => {
         if (meals.length == 0 && search) {
-            getMeals(GET_TYPE.SEARCH, name)
-            setSearch(false)
+            getMeals(GET_TYPE.SEARCH, name);
+            setSearch(false);
         }
-      
         if(!!loadedMeals) {
-            setMeals(loadedMeals);
+            setMeals(processMeals(loadedMeals));
         }
     }, [loadedMeals])
 

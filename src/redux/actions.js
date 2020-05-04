@@ -50,9 +50,10 @@ const getMealsStart = () => ({
     type: GET_MEALS_START
 })
 
-const getMealsSuccess = (args) => ({
+const getMealsSuccess = (result, type) => ({
     type: GET_MEALS_SUCCESS,
-    args
+    result: result,
+    filterType: type
 })
 
 const getMealsError = () => ({
@@ -113,7 +114,7 @@ const getMeals = (type, name) => {
     
         ClientService.getMeals(type,name)
           .then(res => {
-            dispatch(getMealsSuccess(res));
+            dispatch(getMealsSuccess(res, type));
           })
           .catch(err => {
             console.log(err.message)

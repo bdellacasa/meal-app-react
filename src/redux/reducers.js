@@ -14,7 +14,8 @@ import {
     GET_MEAL_DETAIL_ERROR
 } from "./types";
 
-import ClientService from '../services/ClientService';
+import { GET_TYPE } from '../utils/Constants';
+import { processMeals, processIngredients } from '../utils/Helpers';
 
 const initial_state = {
     categories: [],
@@ -23,27 +24,6 @@ const initial_state = {
     meal: null,
     loading: false
 };
-
-const processMeals = (result) => {
-    return (!!result.meals ? 
-        result.meals.map(meal => ({
-            id: meal.idMeal,
-            src: meal.strMealThumb,
-            title: meal.strMeal
-        }))
-    : []);
-}
-
-const processIngredients = (result) => {
-    return (!!result.meals ? 
-        result.meals.map(ingredient => ({
-            id: ingredient.idIngredient,
-            src: ClientService.getIngredientImgUrl(ingredient.strIngredient),
-            title: ingredient.strIngredient
-        }))
-    : []);
-}
-
 
 export const reducer = (state = initial_state, action) => {
     switch(action.type) {
@@ -66,7 +46,7 @@ export const reducer = (state = initial_state, action) => {
             return Object.assign({}, state, { categories: action.args, loading: false });
 
         case GET_MEALS_SUCCESS:
-            return Object.assign({}, state, { meals: processMeals(action.args), loading: false });
+            return Object.assign({}, state, { meals: (action.filterType == GET_TYPE.SEARCH ? action.result : processMeals(action.result)), loading: false });
 
         case GET_MEAL_DETAIL_SUCCESS:
         case SAVE_CURRENT_MEAL:
