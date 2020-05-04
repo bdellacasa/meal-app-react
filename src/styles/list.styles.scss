@@ -83,6 +83,10 @@
 
     .card {
         max-width: 300px;
+        max-height: 280px;
+    }
+
+    .card-index {
         max-height: 200px;
     }
 
@@ -101,6 +105,6 @@
     }
 
     .card-title {
-        margin-top: -1.9vh;
+        margin-top: -0.9vh;
     }
 }
