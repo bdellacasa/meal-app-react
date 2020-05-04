@@ -45,15 +45,22 @@
 
 @media screen and (max-width: 508px) {
     .hero-background {
-        width: 116vw;
+        width: 103vw;
     }
 
     .hero-content-container {
-        margin-left: 10vw;
+        margin-left: 5vw;
         padding-top: 35px;
     }
 
     .hero-search-container {
         width: 60vw;
+    }
+}
+
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+    .hero-content-container {
+        margin-left: 8vw;
+        padding-top: 60px;
     }
 }

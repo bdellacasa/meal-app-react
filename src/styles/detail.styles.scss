@@ -85,11 +85,55 @@
         margin-top: 50vh;
     }
 
+    .detail-info-title {
+        font-size: 1.7em;
+    }
+
+    .detail-info-item {
+        font-size: 1.1em;
+    }
+
     .detail-info-tags {
         margin-left: -30px;
     }
 
     .detail-tag {
         padding-top: 15px;
+    }
+}
+
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+    .detail-info-container {
+        width: 95vw;
+        height: 500px;
+        margin-left: 10px;
+    }
+
+    .detail-img {
+        max-width: 50vw;
+        max-height: 50vw;
+        margin-left: 30px;
+    }
+
+    .detail-info {
+        margin-left: 2vw;
+    }
+
+    .detail-info-title {
+        font-size: 1.4em;
+    }
+    
+    .detail-info-item {
+        font-size: 1.1em;
+    }
+
+    .detail-tag {
+        margin-left: 5px;
+        margin-top: 5px; 
+        width: 100px;
+    }
+
+    .detail-instructions {
+        max-width: 85vw;
     }
 }

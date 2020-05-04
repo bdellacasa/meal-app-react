@@ -77,8 +77,12 @@
     .list {
         grid-template-columns: repeat(1, 1fr);
         grid-row-gap: 80px;
-        margin-left: 10vw;
+        margin-left: 5vw;
         align-self: center;
+    }
+
+    .list-ingredients-container {
+        margin-left: 7vw;
     }
 
     .card {
@@ -106,5 +110,38 @@
 
     .card-title {
         margin-top: -0.9vh;
+    }
+}
+
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+    .list-ingredients-container {
+        margin-left: 8vw;
+    }
+
+    .list {
+        margin-left: 3vw;
+    }
+
+    .image-container {
+        &:hover {
+            transform: none
+        }
+    }
+
+    .card {
+        height: 70vh;
+    }
+
+    .card-index {
+        max-height: 140px;
+    }
+
+    .card-img {
+        margin-top: -5px;
+    }
+
+    .card-title {
+        font-size: 1.1em;
+        margin-top: -3vh;
     }
 }

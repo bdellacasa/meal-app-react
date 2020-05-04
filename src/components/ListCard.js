@@ -29,7 +29,7 @@ const ListCard = (props) => {
     props.onClick();
   }
 
-  const title = props.title.length > 30 ? `${props.title.slice(0,30)}...` : props.title;
+  const title = props.title.length > 30 ? `${props.title.slice(0,24)}...` : props.title;
 
   const renderImg = () => {
     return(
@@ -47,9 +47,9 @@ const ListCard = (props) => {
     return(
       isIndexPage ? 
         <div className={"image-container"}>
-          <CardImg className={"card-image-placeholder"} style={{ marginTop: '20px' }} src={placeholder} alt=""/>
+          <CardImg className={"card-image"} style={{ marginTop: '20px' }} src={placeholder} alt=""/>
         </div> 
-        : <CardImg className={"card-image-placeholder"} style={{ marginTop: '60px' }} src={placeholder} onError={e => onImgError(e)} alt=""/>
+        : <CardImg className={"card-image"} style={{ marginTop: '60px' }} src={placeholder} onError={e => onImgError(e)} alt=""/>
     )
   }
 

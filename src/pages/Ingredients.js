@@ -34,7 +34,7 @@ const Ingredients = ({ loadedIngredients, loading, getIngredients }) => {
         return(
             <div>
                 {!loading ? 
-                    currentIngredients.length > 0 && <div>
+                    currentIngredients.length > 0 && <div className={"list-ingredients-container"}>
                         <p className={"list-title"}>Ingredients</p>
                         <List data={currentIngredients}/>
                         <Paginator totalPages={totalPages} maxPagesToShow={15} paginate={page => setCurrentPage(page)}/>

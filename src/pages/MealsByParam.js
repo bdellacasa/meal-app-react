@@ -10,6 +10,7 @@ import { GET_TYPE, getPageType, PAGE_TYPE } from '../utils/Constants';
 const MealsByParam = ({ loadedMeals, loading, getMeals, getMealDetail }) => {
     const [meals, setMeals ] = useState([]);
     const [param, setParam] = useState(window.location.pathname.split("/")[2]);
+    const [filter, setFilter] = useState(true);
 
     const fetchMeals = () => {
         switch(getPageType(window.location.pathname.split("/")[1])) {
@@ -39,27 +40,34 @@ const MealsByParam = ({ loadedMeals, loading, getMeals, getMealDetail }) => {
     }
 
     useEffect(() => {
-        if (meals.length == 0) {
+        if (meals.length == 0 && filter) {
             fetchMeals();
+            setFilter(false)
         }
         if(!!loadedMeals) {
             setMeals(loadedMeals);
         }
         
-    }, [loadedMeals])
+    }, [loadedMeals, loading])
 
     const onClickHandler = (element) => {
         getMealDetail(element.id)
     }
 
     const renderContent = () => {
-        const showSpinner = loading || meals.length == 0;
         return(
             <div>
-                {!showSpinner ? 
+                {!loading ? 
                     <div>
-                        <p className={"list-title"}>{getTitle()}</p>
-                        <List data={meals} onClick={element => onClickHandler(element)}/>
+                        <div>
+                            {(meals.length > 0) ?
+                                <div>
+                                    <p className={"list-title"}>{getTitle()}</p>
+                                    <List data={meals} onClick={element => onClickHandler(element)}/>
+                                </div>
+                            :   <p className={"list-title"}> Not food found</p>
+                            }
+                        </div>
                     </div>
                 :   <div style={{marginTop: '30vh'}}>  
                         <Spinner style={{ width: '4rem', height: '4rem' }} color="primary"/>
