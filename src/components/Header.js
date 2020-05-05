@@ -22,11 +22,13 @@ const styles =
     {
         title: {
             fontSize: '1.4em'
+            
         },
         options: {
             fontSize: '1.2em', 
             color: 'white',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            paddingTop: '18px'
         },
     }
 
@@ -49,8 +51,10 @@ const Header = () => {
 
     const items = areas.map(area => {
         return(
-            <DropdownItem href={`/area/${area}`} key={area}>
-                {area}
+            <DropdownItem key={area}>
+                <Link to={`/area/${area}`} className={"header-area"}>
+                    {area}
+                </Link>
             </DropdownItem>
         )
     })
@@ -74,7 +78,9 @@ const Header = () => {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                         <NavItem style={{paddingLeft: '5vw'}}>
-                            <NavLink href="/ingredients" style={styles.options}>Ingredients</NavLink>
+                            <Link to={"/ingredients"}>
+                                <p style={styles.options}>Ingredients</p>
+                            </Link>
                         </NavItem>
                     </Nav>
                 </Collapse>}

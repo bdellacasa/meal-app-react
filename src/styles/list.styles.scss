@@ -19,10 +19,9 @@
 .card {
     max-width: 400px;
     max-height: 300px;
-    border-radius: 2em;
+    border-radius: 1em;
     margin-bottom: 5vh;
-    border-radius: 40%;
-    box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.17);
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.17);
     background-color: white;
 }
 
@@ -30,13 +29,13 @@
     max-width: 400px;
     max-height: 250px;
     background-size: cover;
-    border-radius: 40%;
 }
 
 .image-container {
     max-width: 400px;
     max-height: 300px;
     margin-top: 20px;
+    border-radius: 1em;
     align-self: center;
     align-content: center;
     transition: all .3s ease;
@@ -46,6 +45,7 @@
 }
 
 .card-body {
+    border-bottom: 1em;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.17);
 }
 
