@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/list.styles.scss';
 import Card from './ListCard';
 
-const List = (props) => {
-    const onClick = (element) => {
-        if (!!props.onClick) {
-            props.onClick(element);
+const List = ({ data, onClick }) => {
+    const handleOnClick = (element) => {
+        if (onClick) {
+            onClick(element);
         }
     }
 
-    const cardsArray = props.data.map((element, idx) => (
+    const cardsArray = data.map((element, idx) => (
         <Card
             key={idx}
             id={element.id}
             src={element.src}
             title={element.title}
             description={element.description}
-            onClick={() => onClick(element)}/>
+            onClick={() => handleOnClick(element)} />
     ));
-    
-    return(
+
+    return (
         <div className={"list"}>
             {cardsArray}
         </div>

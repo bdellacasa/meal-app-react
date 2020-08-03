@@ -1,7 +1,7 @@
-import { 
-    GET_CATEGORIES_START, 
-    GET_CATEGORIES_SUCCESS, 
-    GET_CATEGORIES_ERROR, 
+import {
+    GET_CATEGORIES_START,
+    GET_CATEGORIES_SUCCESS,
+    GET_CATEGORIES_ERROR,
     GET_INGREDIENTS_START,
     GET_INGREDIENTS_SUCCESS,
     GET_INGREDIENTS_ERROR,
@@ -81,7 +81,6 @@ const saveCurrentMeal = (args) => ({
 const getCategories = () => {
     return dispatch => {
         dispatch(getCategoriesStart());
-
         ClientService.getAllMealCategories()
             .then(res => {
                 dispatch(getCategoriesSuccess(res));
@@ -96,45 +95,42 @@ const getCategories = () => {
 const getIngredients = () => {
     return dispatch => {
         dispatch(getIngredientsStart());
-    
         ClientService.getIngredients()
-          .then(res => {
-            dispatch(getIngredientsSuccess(res));
-          })
-          .catch(err => {
-            console.log(err.message)
-            dispatch(getIngredientsError());
-          });
+            .then(res => {
+                dispatch(getIngredientsSuccess(res));
+            })
+            .catch(err => {
+                console.log(err.message)
+                dispatch(getIngredientsError());
+            });
     }
 }
 
 const getMeals = (type, name) => {
     return dispatch => {
         dispatch(getMealsStart());
-    
-        ClientService.getMeals(type,name)
-          .then(res => {
-            dispatch(getMealsSuccess(res, type));
-          })
-          .catch(err => {
-            console.log(err.message)
-            dispatch(getMealsError());
-          });
+        ClientService.getMeals(type, name)
+            .then(res => {
+                dispatch(getMealsSuccess(res, type));
+            })
+            .catch(err => {
+                console.log(err.message)
+                dispatch(getMealsError());
+            });
     }
 }
 
 const getMealDetail = (id) => {
     return dispatch => {
         dispatch(getMealDetailStart());
-    
         ClientService.getMealDetail(id)
-          .then(res => {
-            dispatch(getMealDetailSuccess(res));
-          })
-          .catch(err => {
-            console.log(err.message)
-            dispatch(getMealDetailError());
-          });
+            .then(res => {
+                dispatch(getMealDetailSuccess(res));
+            })
+            .catch(err => {
+                console.log(err.message)
+                dispatch(getMealDetailError());
+            });
     }
 }
 

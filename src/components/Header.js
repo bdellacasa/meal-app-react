@@ -7,50 +7,49 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem
-  } from 'reactstrap';
+} from 'reactstrap';
 
 import '../styles/header.styles.scss';
 import logo from '../assets/logo.png';
 import ClientService from '../services/ClientService';
 
 const styles =
-    {
-        title: {
-            fontSize: '1.4em'
-            
-        },
-        options: {
-            fontSize: '1.2em', 
-            color: 'white',
-            fontWeight: 'bold',
-            paddingTop: '18px'
-        },
-    }
+{
+    title: {
+        fontSize: '1.4em'
+
+    },
+    options: {
+        fontSize: '1.2em',
+        color: 'white',
+        fontWeight: 'bold',
+        paddingTop: '18px'
+    },
+}
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [areas, setAreas ] = useState([]);
-    const [isIndexPage, setIsIndexPage] = useState(window.location.pathname.split("/")[1] == "");
+    const [areas, setAreas] = useState([]);
+    const isIndexPage = window.location.pathname.split("/")[1] === "";
 
     useEffect(() => {
-        if (areas.length ==  0) {
+        if (areas.length === 0) {
             ClientService.getAreas().then(areas => {
-                if(!!areas) {
+                if (areas) {
                     setAreas(areas.meals.map(area => area.strArea))
                 }
             })
         }
-    })
+    }, [areas])
 
     const toggle = () => setIsOpen(!isOpen);
 
     const items = areas.map(area => {
-        return(
+        return (
             <DropdownItem key={area}>
                 <Link to={`/area/${area}`} className={"header-area"}>
                     {area}
@@ -63,9 +62,9 @@ const Header = () => {
         <div>
             <Navbar color="transparent" light expand="md">
                 <Link to={"/"}>
-                    <img src={logo} className={"header-logo"} />
+                    <img src={logo} className={"header-logo"} alt="" />
                 </Link>
-                <NavbarBrand href="/" className={"header-navbar-brand"} style={styles.title, { color: (isIndexPage ? 'white' : 'black')}}>MealApp</NavbarBrand>
+                <NavbarBrand href="/" className={"header-navbar-brand"} style={styles.title, { color: (isIndexPage ? 'white' : 'black') }}>MealApp</NavbarBrand>
                 {isIndexPage && <NavbarToggler onClick={toggle} />}
                 {isIndexPage && <Collapse className={"header-menu"} isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
@@ -77,7 +76,7 @@ const Header = () => {
                                 {items}
                             </DropdownMenu>
                         </UncontrolledDropdown>
-                        <NavItem style={{paddingLeft: '5vw'}}>
+                        <NavItem style={{ paddingLeft: '5vw' }}>
                             <Link to={"/ingredients"}>
                                 <p style={styles.options}>Ingredients</p>
                             </Link>

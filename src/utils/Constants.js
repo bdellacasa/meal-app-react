@@ -15,7 +15,7 @@ export const PAGE_TYPE = {
 }
 
 export const getPageType = (pathValue) => {
-    switch(pathValue) {
+    switch (pathValue) {
         case "":
             return PAGE_TYPE.INDEX;
         case "area":
@@ -28,5 +28,7 @@ export const getPageType = (pathValue) => {
             return PAGE_TYPE.SEARCH;
         case "category":
             return PAGE_TYPE.CATEGORY;
+        default:
+            break;
     }
 }

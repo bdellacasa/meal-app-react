@@ -46,7 +46,7 @@ export const reducer = (state = initial_state, action) => {
             return Object.assign({}, state, { categories: action.args, loading: false });
 
         case GET_MEALS_SUCCESS:
-            return Object.assign({}, state, { meals: (action.filterType == GET_TYPE.SEARCH ? action.result : processMeals(action.result)), loading: false });
+            return Object.assign({}, state, { meals: (action.filterType === GET_TYPE.SEARCH ? action.result : processMeals(action.result)), loading: false });
 
         case GET_MEAL_DETAIL_SUCCESS:
         case SAVE_CURRENT_MEAL:

@@ -13,12 +13,12 @@ const Search = () => {
   }
 
   const handleOnKeyDown = (event) => {
-    if (event.keyCode == '13'){
+    if (event.keyCode === 13){
       navigate(); // Enter pressed
     }
   }
 
-  const handleChange = (event) => {
+  const handleOnChange = (event) => {
     setQuery(event.target.value)
   }
 
@@ -31,7 +31,7 @@ const Search = () => {
                     className={"search-form"}
                     placeholder={"I want to make"}
                     onKeyDown={e => handleOnKeyDown(e)}
-                    onChange={handleChange}
+                    onChange={handleOnChange}
                 />
             </form>
             <button className={"search-button"} onClick={() => navigate()}>Search</button>
