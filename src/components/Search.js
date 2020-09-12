@@ -13,7 +13,7 @@ const Search = () => {
   }
 
   const handleOnKeyDown = (event) => {
-    if (event.keyCode === 13){
+    if (event.keyCode === 13) {
       navigate(); // Enter pressed
     }
   }
@@ -23,21 +23,21 @@ const Search = () => {
   }
 
   return (
-      (!redirectToResults ?
-        <div className={"search-container"}>
-            <form>
-                <input
-                    id={"search_form"}
-                    className={"search-form"}
-                    placeholder={"I want to make"}
-                    onKeyDown={e => handleOnKeyDown(e)}
-                    onChange={handleOnChange}
-                />
-            </form>
-            <button className={"search-button"} onClick={() => navigate()}>Search</button>
-        </div>
-        :  <Redirect push to={`/search/${query}`} />
-      )
+    (!redirectToResults ?
+      <div className={"search-container"}>
+        <form>
+          <input
+            id={"search_form"}
+            className={"search-form"}
+            placeholder={"I want to make"}
+            onKeyDown={e => handleOnKeyDown(e)}
+            onChange={handleOnChange}
+          />
+        </form>
+        <button className={"search-button"} onClick={() => navigate()}>Search</button>
+      </div>
+      : <Redirect push to={`/search/${query}`} />
+    )
   )
 }
 

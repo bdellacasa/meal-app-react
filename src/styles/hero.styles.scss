@@ -1,66 +1,66 @@
 .header-container {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .hero-background {
-    min-width: 100vw;
-    height: 500px;
-    margin-top: 0px;
-    background-size: cover;
-    align-content: center;
+  min-width: 100vw;
+  height: 500px;
+  margin-top: 0px;
+  background-size: cover;
+  align-content: center;
 }
 
 .hero-opacity {
-    background: rgba(0, 0, 0, 0.4);
-    height: 500px;
+  background: rgba(0, 0, 0, 0.4);
+  height: 500px;
 }
 
 .hero-content-container {
-    font-size: 25px;
-    padding-top: 120px;
-    width: fit-content;    
-    align-items: flex-start;
-    margin-left: 14vw;
+  font-size: 25px;
+  padding-top: 120px;
+  width: fit-content;    
+  align-items: flex-start;
+  margin-left: 14vw;
 }
 
 .hero-text {
-    font-family: 'Kurale';
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: start; 
-    color: white;
+  font-family: 'Kurale';
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: start; 
+  color: #ffffff;
 }
 
 .hero-subtext {
-    font-family: 'Kurale';
-    font-size: 1.15em;
-    text-align: start; 
-    color: white;
+  font-family: 'Kurale';
+  font-size: 1.15em;
+  text-align: start; 
+  color: #ffffff;
 }
 
 .hero-search-container {
-    margin-top: 70px;
-    width: 100px;
+  margin-top: 70px;
+  width: 100px;
 }
 
 @media screen and (max-width: 508px) {
-    .hero-background {
-        width: 103vw;
-    }
+  .hero-background {
+    width: 103vw;
+  }
 
-    .hero-content-container {
-        margin-left: 5vw;
-        padding-top: 30px;
-    }
+  .hero-content-container {
+    margin-left: 5vw;
+    padding-top: 30px;
+  }
 
-    .hero-search-container {
-        width: 60vw;
-    }
+  .hero-search-container {
+    width: 60vw;
+  }
 }
 
 @media screen and (max-width: 1000px) and (orientation: landscape) {
-    .hero-content-container {
-        margin-left: 8vw;
-        padding-top: 60px;
-    }
+  .hero-content-container {
+    margin-left: 8vw;
+    padding-top: 60px;
+  }
 }

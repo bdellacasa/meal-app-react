@@ -1,139 +1,140 @@
 .detail-info-container {
-    margin-top: 5vh;
-    width: 80vw;
-    height: 600px;
-    border-radius: 3em;
-    display: flex;
-    align-content: flex-start;
-    background-color: rgba($color: #444342, $alpha: 0.5);
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  align-items: center;
+  width: 80vw;
+  height: 600px;
+  margin-top: 5vh;
+  border-radius: 3em;
+  background-color: rgba($color: #444342, $alpha: 0.5);
 }
 
 .detail-img {
-    flex-direction: column;
-    width: 500px;
-    height: 500px;
-    background-size: cover;
-    border-radius: 5%;
-    margin-left: 10vw;
-    margin-top: 5vh;
-    background-color: rgba($color: #444342, $alpha: 0.8);
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  background-size: cover;
+  border-radius: 5%;
+  margin-left: 10vw;
+  background-color: rgba($color: #444342, $alpha: 0.8);
 }
 
 .detail-info {
-    flex-direction: column;
-    max-width: 800px;
-    align-items: flex-start;
-    margin-left: 3vw;
-    margin-top: 15vh;
-    text-align: start;
+  flex-direction: column;
+  max-width: 800px;
+  align-items: flex-start;
+  margin-left: 3vw;
+  margin-top: -10%;
+  text-align: start;
 }
 
 .detail-info-title {
-    font-family: 'Kurale';
-    font-size: 1.9em;
-    font-weight: bold;
+  font-family: 'Kurale';
+  font-size: 1.9em;
+  font-weight: bold;
 }
 
 .detail-info-item {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.2em;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2em;
 }
 
 .detail-info-tags {
-    flex-direction: column;
-    font-size: 1.3em;
-    text-align: center;
-    margin-left: -10px;
+  flex-direction: column;
+  font-size: 1.3em;
+  text-align: center;
+  margin-left: -10px;
 }
 
 .detail-tag {
-    margin-left: 5px; 
-    width: 150px;
-    height: 40px;
+  margin-left: 5px; 
+  width: 150px;
+  height: 40px;
 }
 
 .detail-ingredients {
-    flex-direction: row;
-    max-width: 600px;
-    align-items: flex-start;
-    margin-left: 5vw;
-    margin-top: 8vh;
-    text-align: start;
+  flex-direction: row;
+  max-width: 600px;
+  align-items: flex-start;
+  margin-left: 5vw;
+  margin-top: 8vh;
+  text-align: start;
 }
 
 .detail-instructions {
-    @extend .detail-ingredients;
+  @extend .detail-ingredients;
+  max-width: 70vw;
+}
+
+@media screen and (max-width: 650px) {
+  .detail-info-container {
+    width: 90vw;
+    min-height: 800px;
+    flex-direction: column;
+  }
+  
+  .detail-img {
+    flex-direction: row;
     max-width: 70vw;
+    max-height: 70vw;
+    margin-top: 10%;
+  }
+  
+  .detail-info {
+    flex-direction: row;
+    margin-top: 5%;
+  }
+
+  .detail-info-title {
+    font-size: 1.7em;
+  }
+
+  .detail-info-item {
+    font-size: 1.1em;
+  }
+
+  .detail-info-tags {
+    margin-left: -30px;
+  }
+
+  .detail-tag {
+    padding-top: 15px;
+  }
 }
 
-@media screen and (max-width: 508px) {
-    .detail-info-container {
-        display: flex;
-        width: 90vw;
-        min-height: 800px;
-    }
-    
-    .detail-img {
-        flex-direction: row;
-        max-width: 70vw;
-        max-height: 70vw;
-    }
-    
-    .detail-info {
-        flex-direction: row;
-        margin-left: -70vw;
-        margin-top: 50vh;
-    }
+@media screen and (max-width: 1024px) {
+  .detail-info-container {
+    width: 90%;
+    height: 500px;
+    margin-left: 10px;
+  }
 
-    .detail-info-title {
-        font-size: 1.7em;
-    }
+  .detail-img {
+    width: 400px;
+    height: 400px;
+    margin-left: 30px;
+  }
 
-    .detail-info-item {
-        font-size: 1.1em;
-    }
+  .detail-info {
+    margin-left: 2vw;
+  }
 
-    .detail-info-tags {
-        margin-left: -30px;
-    }
+  .detail-info-title {
+    font-size: 1.4em;
+  }
+  
+  .detail-info-item {
+    font-size: 1.1em;
+  }
 
-    .detail-tag {
-        padding-top: 15px;
-    }
-}
+  .detail-tag {
+    margin-left: 5px;
+    margin-top: 5px; 
+    width: 100px;
+  }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
-    .detail-info-container {
-        width: 95vw;
-        height: 500px;
-        margin-left: 10px;
-    }
-
-    .detail-img {
-        max-width: 50vw;
-        max-height: 50vw;
-        margin-left: 30px;
-    }
-
-    .detail-info {
-        margin-left: 2vw;
-    }
-
-    .detail-info-title {
-        font-size: 1.4em;
-    }
-    
-    .detail-info-item {
-        font-size: 1.1em;
-    }
-
-    .detail-tag {
-        margin-left: 5px;
-        margin-top: 5px; 
-        width: 100px;
-    }
-
-    .detail-instructions {
-        max-width: 85vw;
-    }
+  .detail-instructions {
+    max-width: 85vw;
+  }
 }

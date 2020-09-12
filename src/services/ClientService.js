@@ -5,81 +5,81 @@ import { GET_TYPE } from '../utils/Constants';
 import axios from 'axios';
 
 const headers = {
-    method: "GET"
+  method: "GET"
 }
 
 const API_URL = `https://www.themealdb.com/api/json/v1/${API_KEY}`;
 
 class ClientServiceImpl extends Component {
-    
-    getIngredientImgUrl = (name) => { 
-        return `https://www.themealdb.com/images/ingredients/${name}.png` 
-    };
 
-    get = async (url) => {
-        return axios(url, headers)
-        .then(response => {
-            console.log("GET "+url+" OK");
-            return response.data;
-        })
-        .catch(error => { 
-            console.log("ERROR GET "+url+" ", error.response ? error.response.status : 'network error')
-            return null;
-        })
-    }
+  getIngredientImgUrl = (name) => {
+    return `https://www.themealdb.com/images/ingredients/${name}.png`
+  };
 
-    getMealDetail = (id) => {
-        return this.get(`${API_URL}${'/lookup.php?i='}${id}`).then(result =>{
-            return (!!result ? result.meals[0] : null);
-        });
-    }
+  get = async (url) => {
+    return axios(url, headers)
+      .then(response => {
+        console.log("GET " + url + " OK");
+        return response.data;
+      })
+      .catch(error => {
+        console.log("ERROR GET " + url + " ", error.response ? error.response.status : 'network error')
+        return null;
+      })
+  }
 
-    searchMealByName = (name) => {
-        return this.get(`${API_URL}${'/search.php?s='}${name}`);
-    }
+  getMealDetail = (id) => {
+    return this.get(`${API_URL}${'/lookup.php?i='}${id}`).then(result => {
+      return (!!result ? result.meals[0] : null);
+    });
+  }
 
-    getAllMealCategories = () => {
-        return this.get(`${API_URL}${'/categories.php'}`);
-    }
+  searchMealByName = (name) => {
+    return this.get(`${API_URL}${'/search.php?s='}${name}`);
+  }
 
-    getCategories = () => {
-        return this.get(`${API_URL}${'/list.php?c=list'}`);
-    }
+  getAllMealCategories = () => {
+    return this.get(`${API_URL}${'/categories.php'}`);
+  }
 
-    getAreas = () => {
-        return this.get(`${API_URL}${'/list.php?a=list'}`);
-    }
+  getCategories = () => {
+    return this.get(`${API_URL}${'/list.php?c=list'}`);
+  }
 
-    getIngredients = () => {
-        return this.get(`${API_URL}${'/list.php?i=list'}`);
-    }
+  getAreas = () => {
+    return this.get(`${API_URL}${'/list.php?a=list'}`);
+  }
 
-    filterByMainIngredient = (ingredient) => {
-        return this.get(`${API_URL}${'/filter.php?i='}${ingredient}`);
-    }
+  getIngredients = () => {
+    return this.get(`${API_URL}${'/list.php?i=list'}`);
+  }
 
-    filterByCategory = (category) => {
-        return this.get(`${API_URL}${'/filter.php?c='}${category}`);
-    }
+  filterByMainIngredient = (ingredient) => {
+    return this.get(`${API_URL}${'/filter.php?i='}${ingredient}`);
+  }
 
-    filterByArea = (area) => {
-        return this.get(`${API_URL}${'/filter.php?a='}${area}`);      
-    }
+  filterByCategory = (category) => {
+    return this.get(`${API_URL}${'/filter.php?c='}${category}`);
+  }
 
-    getMeals = (type, param) => {
-        switch(type) {
-            case GET_TYPE.SEARCH:
-                return this.searchMealByName(param);
-            case GET_TYPE.MEALS_BY_AREA:
-                return this.filterByArea(param);
-            case GET_TYPE.MEALS_BY_INGREDIENT:
-                return this.filterByMainIngredient(param);
-            case GET_TYPE.MEALS_BY_CATEGORY:
-                    return this.filterByCategory(param);
-            default:
-                break;
-        }
+  filterByArea = (area) => {
+    return this.get(`${API_URL}${'/filter.php?a='}${area}`);
+  }
+
+  getMeals = (type, param) => {
+    switch (type) {
+      case GET_TYPE.SEARCH:
+        return this.searchMealByName(param);
+      case GET_TYPE.MEALS_BY_AREA:
+        return this.filterByArea(param);
+      case GET_TYPE.MEALS_BY_INGREDIENT:
+        return this.filterByMainIngredient(param);
+      case GET_TYPE.MEALS_BY_CATEGORY:
+        return this.filterByCategory(param);
+      default:
+        break;
     }
+  }
 }
 
 const ClientService = new ClientServiceImpl();

@@ -1,19 +1,16 @@
 .paginator-container {
-    overflow-x: auto;
-    margin-top: 100px;
-    margin-left: 25vw;
+  overflow-x: auto;
+  margin-top: 100px;
 }
 
 @media screen and (max-width: 420px) {
-    .paginator-container {
-        width: 92vw;
-        margin-left: -3vw;
-    }
+  .paginator-container {
+    width: 92vw;
+  }
 }
 
-@media screen and (max-width: 1000px) and (orientation: landscape) {
-    .paginator-container {
-        width: 90vw;
-        margin-left: 2vw;
-    }
+@media screen and (max-width: 1000px) {
+  .paginator-container {
+    width: 90vw;
+  }
 }

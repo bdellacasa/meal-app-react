@@ -1,17 +1,17 @@
 import {
-    GET_CATEGORIES_START,
-    GET_CATEGORIES_SUCCESS,
-    GET_CATEGORIES_ERROR,
-    GET_INGREDIENTS_START,
-    GET_INGREDIENTS_SUCCESS,
-    GET_INGREDIENTS_ERROR,
-    GET_MEALS_START,
-    GET_MEALS_SUCCESS,
-    GET_MEALS_ERROR,
-    SAVE_CURRENT_MEAL,
-    GET_MEAL_DETAIL_START,
-    GET_MEAL_DETAIL_SUCCESS,
-    GET_MEAL_DETAIL_ERROR
+  GET_CATEGORIES_START,
+  GET_CATEGORIES_SUCCESS,
+  GET_CATEGORIES_ERROR,
+  GET_INGREDIENTS_START,
+  GET_INGREDIENTS_SUCCESS,
+  GET_INGREDIENTS_ERROR,
+  GET_MEALS_START,
+  GET_MEALS_SUCCESS,
+  GET_MEALS_ERROR,
+  SAVE_CURRENT_MEAL,
+  GET_MEAL_DETAIL_START,
+  GET_MEAL_DETAIL_SUCCESS,
+  GET_MEAL_DETAIL_ERROR
 } from "./types";
 
 import ClientService from '../services/ClientService';
@@ -21,125 +21,125 @@ import ClientService from '../services/ClientService';
  */
 
 const getCategoriesStart = () => ({
-    type: GET_CATEGORIES_START
+  type: GET_CATEGORIES_START
 });
 
 const getCategoriesSuccess = (args) => ({
-    type: GET_CATEGORIES_SUCCESS,
-    args
+  type: GET_CATEGORIES_SUCCESS,
+  args
 });
 
 const getCategoriesError = () => ({
-    type: GET_CATEGORIES_ERROR
+  type: GET_CATEGORIES_ERROR
 })
 
 const getIngredientsStart = () => ({
-    type: GET_INGREDIENTS_START
+  type: GET_INGREDIENTS_START
 })
 
 const getIngredientsSuccess = (args) => ({
-    type: GET_INGREDIENTS_SUCCESS,
-    args
+  type: GET_INGREDIENTS_SUCCESS,
+  args
 })
 
 const getIngredientsError = () => ({
-    type: GET_INGREDIENTS_ERROR
+  type: GET_INGREDIENTS_ERROR
 })
 
 const getMealsStart = () => ({
-    type: GET_MEALS_START
+  type: GET_MEALS_START
 })
 
 const getMealsSuccess = (result, type) => ({
-    type: GET_MEALS_SUCCESS,
-    result: result,
-    filterType: type
+  type: GET_MEALS_SUCCESS,
+  result: result,
+  filterType: type
 })
 
 const getMealsError = () => ({
-    type: GET_MEALS_ERROR
+  type: GET_MEALS_ERROR
 })
 
 const getMealDetailStart = () => ({
-    type: GET_MEAL_DETAIL_START
+  type: GET_MEAL_DETAIL_START
 })
 
 const getMealDetailSuccess = (args) => ({
-    type: GET_MEAL_DETAIL_SUCCESS,
-    args
+  type: GET_MEAL_DETAIL_SUCCESS,
+  args
 })
 
 const getMealDetailError = () => ({
-    type: GET_MEAL_DETAIL_ERROR
+  type: GET_MEAL_DETAIL_ERROR
 })
 
 const saveCurrentMeal = (args) => ({
-    type: SAVE_CURRENT_MEAL,
-    args
+  type: SAVE_CURRENT_MEAL,
+  args
 })
 
 const getCategories = () => {
-    return dispatch => {
-        dispatch(getCategoriesStart());
-        ClientService.getAllMealCategories()
-            .then(res => {
-                dispatch(getCategoriesSuccess(res));
-            })
-            .catch(err => {
-                console.log(err.message)
-                dispatch(getCategoriesError());
-            });
-    }
+  return dispatch => {
+    dispatch(getCategoriesStart());
+    ClientService.getAllMealCategories()
+      .then(res => {
+        dispatch(getCategoriesSuccess(res));
+      })
+      .catch(err => {
+        console.log(err.message)
+        dispatch(getCategoriesError());
+      });
+  }
 }
 
 const getIngredients = () => {
-    return dispatch => {
-        dispatch(getIngredientsStart());
-        ClientService.getIngredients()
-            .then(res => {
-                dispatch(getIngredientsSuccess(res));
-            })
-            .catch(err => {
-                console.log(err.message)
-                dispatch(getIngredientsError());
-            });
-    }
+  return dispatch => {
+    dispatch(getIngredientsStart());
+    ClientService.getIngredients()
+      .then(res => {
+        dispatch(getIngredientsSuccess(res));
+      })
+      .catch(err => {
+        console.log(err.message)
+        dispatch(getIngredientsError());
+      });
+  }
 }
 
 const getMeals = (type, name) => {
-    return dispatch => {
-        dispatch(getMealsStart());
-        ClientService.getMeals(type, name)
-            .then(res => {
-                dispatch(getMealsSuccess(res, type));
-            })
-            .catch(err => {
-                console.log(err.message)
-                dispatch(getMealsError());
-            });
-    }
+  return dispatch => {
+    dispatch(getMealsStart());
+    ClientService.getMeals(type, name)
+      .then(res => {
+        dispatch(getMealsSuccess(res, type));
+      })
+      .catch(err => {
+        console.log(err.message)
+        dispatch(getMealsError());
+      });
+  }
 }
 
 const getMealDetail = (id) => {
-    return dispatch => {
-        dispatch(getMealDetailStart());
-        ClientService.getMealDetail(id)
-            .then(res => {
-                dispatch(getMealDetailSuccess(res));
-            })
-            .catch(err => {
-                console.log(err.message)
-                dispatch(getMealDetailError());
-            });
-    }
+  return dispatch => {
+    dispatch(getMealDetailStart());
+    ClientService.getMealDetail(id)
+      .then(res => {
+        dispatch(getMealDetailSuccess(res));
+      })
+      .catch(err => {
+        console.log(err.message)
+        dispatch(getMealDetailError());
+      });
+  }
 }
 
 const actions = {
-    getCategories,
-    getIngredients,
-    getMeals,
-    getMealDetail,
-    saveCurrentMeal
+  getCategories,
+  getIngredients,
+  getMeals,
+  getMealDetail,
+  saveCurrentMeal
 }
 
 export default actions;
